@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>礼物时间!</title>
+    <style>
+        body {
+            background-color: rgb(208, 221, 233);
+            overflow: hidden;
+        }
+
+        #div {
+            border-radius: 2%;
+            background-color: white;
+            box-shadow: 0px 0px 3px grey;
+            width: 80%;
+            height: 90%;
+            position: fixed;
+            left: 10%;
+            top: 5%;
+            overflow: scroll;
+        }
+
+        #p{
+            font-size: 50px;
+            position: absolute;
+            left:5%;
+        }
+    </style>
+    <script>
+
+        function getRandomInt(min, max) {
+            min = Math.ceil(min);
+            max = Math.floor(max);
+            return Math.floor(Math.random() * (max - min + 1)) + min;
+        }
+
+
+
+        window.onload = function () {
+            var t = [0];
+            for (var i = 1; i <= 44; i++) {
+                t.push(i);
+            }
+            t[0] = -1;
+            for (var i = 1; i <= 44; i++) {
+                var temptext = String(i);
+                var temp = 0;
+                while (true) {
+                    temp = getRandomInt(1, 44);
+                    if (t[temp] != -1) {
+                        if(t[temp] != i){   
+                            break;
+                        }
+                    }
+                }
+                if(i<10){
+                    temptext = "0"+String(i);
+                }
+                var num = t[temp];
+                if(t[temp]<10){
+                    num = "0" + t[temp];
+                }
+                temptext = temptext + " -----> " + String(num);
+                var e = document.getElementById("p");
+                e.innerHTML += temptext + "<br>";
+                t[temp] = -1;
+            }
+        }
+    </script>
+</head>
+
+<body>
+    <div id="div">
+        <p id="p" ></p>
+    </div>
+</body>
+
+</html>
